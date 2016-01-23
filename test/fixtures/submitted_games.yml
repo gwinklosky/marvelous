@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: TestGame1
+  description: game_desc_1
+  words: '["answer1:clue1", "answer2:clue2", "answer3:clue3"]'
+  status: Submitted
+
+two:
+  user_id: 1
+  title: TestGame2
+  description: game_desc_2
+  words: '["answer21:clue21", "answer22:clue22", "answer23:clue23"]'
+  status: Submitted

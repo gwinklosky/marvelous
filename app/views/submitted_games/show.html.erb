@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @submitted_game.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @submitted_game.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @submitted_game.user ? @submitted_game.user.username : "None"" %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @submitted_game.status %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @submitted_game.reason %>
+</p>
+
+<p>
+  <strong>Published Game Id:</strong>
+  <%= @submitted_game.published_game_id %>
+</p>
+
+<p>
+  <strong>Words:</strong>
+  <%= @submitted_game.words %>
+</p>
+
+<%= link_to 'Edit', edit_submitted_game_path(@submitted_game) %> |
+<%= link_to 'Back', submitted_games_path %>

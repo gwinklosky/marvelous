@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyName1
+  key: MyKey1
+  admin: true
+
+two:
+  username: MyName2
+  key: MyKey2
+  admin: false

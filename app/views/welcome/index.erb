@@ -1,0 +1,20 @@
+<h1>G;) Apps</h1>
+
+<p>
+Available on the app store for downloading:
+</p>
+
+<table>
+  <tr><th>App</th><th>Description</th></tr>
+<% @apps.each do |app_array| %>
+  <tr>
+    <td><a href="<%=app_array[2]%>"><%=app_array[0]%></a></td>
+    <td><%=app_array[1]%></td>
+  </tr>
+<% end %>  
+</table>
+
+<p>
+  <a href="https://itunes.apple.com/us/developer/gwinklosky/id330171139">G;) Apps</a> (pronounced: g wink apps)
+</p>
+

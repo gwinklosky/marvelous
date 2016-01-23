@@ -1,0 +1,2 @@
+module SubmittedGamesHelper
+end

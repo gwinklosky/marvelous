@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  published_game_id: 1
+  user_id: 1
+  username: MyString
+  points: 1
+
+two:
+  published_game_id: 1
+  user_id: 1
+  username: MyString
+  points: 1

@@ -1,0 +1,332 @@
+  [1m[36m (2.0ms)[0m  [1mSET search_path TO public[0m
+  [1m[35m (627.0ms)[0m  DROP DATABASE IF EXISTS "ruby-getting-started_test"
+  [1m[36m (6058.0ms)[0m  [1mCREATE DATABASE "ruby-getting-started_test" ENCODING = 'unicode'[0m
+  [1m[35m (19.0ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (160.0ms)[0m  [1mCREATE TABLE "published_game_scores" ("id" serial primary key, "published_game_id" integer, "user_id" integer, "username" character varying(255), "points" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (59.0ms)[0m  CREATE TABLE "published_game_word_sets" ("id" serial primary key, "published_game_id" integer, "words" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (50.0ms)[0m  [1mCREATE TABLE "published_games" ("id" serial primary key, "user_id" integer, "title" character varying(255), "description" character varying(255), "featured" timestamp, "current_feature" boolean, "active" boolean, "username" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (59.0ms)[0m  CREATE TABLE "submitted_games" ("id" serial primary key, "user_id" integer, "title" character varying(255), "description" character varying(255), "words" text, "published_game_id" integer, "status" character varying(255), "reason" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (58.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "key" character varying(255), "admin" boolean, "published" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (55.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (3.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (10.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160120190927')[0m
+  [1m[35m (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160120150903')
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160120185115')[0m
+  [1m[35m (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160120190437')
+  [1m[36m (4.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160120190624')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (6.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (21.0ms)[0m  [1mALTER TABLE "published_game_scores" DISABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" DISABLE TRIGGER ALL;ALTER TABLE "published_games" DISABLE TRIGGER ALL;ALTER TABLE "submitted_games" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35mFixture Delete (4.0ms)[0m  DELETE FROM "published_games"
+  [1m[36mFixture Insert (11.0ms)[0m  [1mINSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2016-01-20 14:04:38.000000', 'f', 'f', 'MyString', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 980190962)[0m
+  [1m[35mFixture Insert (2.0ms)[0m  INSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2016-01-20 14:04:38.000000', 'f', 'f', 'MyString', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 298486374)
+  [1m[36mFixture Delete (2.0ms)[0m  [1mDELETE FROM "published_game_scores"[0m
+  [1m[35mFixture Insert (11.0ms)[0m  INSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 13:08:53', '2016-01-21 13:08:53', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 13:08:53', '2016-01-21 13:08:53', 298486374)[0m
+  [1m[35mFixture Delete (3.0ms)[0m  DELETE FROM "published_game_word_sets"
+  [1m[36mFixture Insert (10.0ms)[0m  [1mINSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (1, 'MyText', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (1, 'MyText', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 298486374)
+  [1m[36mFixture Delete (4.0ms)[0m  [1mDELETE FROM "submitted_games"[0m
+  [1m[35mFixture Insert (12.0ms)[0m  INSERT INTO "submitted_games" ("user_id", "title", "description", "words", "published_game_id", "status", "reason", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', 1, 'MyString', 'MyString', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "submitted_games" ("user_id", "title", "description", "words", "published_game_id", "status", "reason", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', 1, 'MyString', 'MyString', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 298486374)[0m
+  [1m[35mFixture Delete (3.0ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (8.0ms)[0m  [1mINSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName1', 'MyKey1', 't', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 980190962)[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName2', 'MyKey2', 'f', '2016-01-21 13:08:53', '2016-01-21 13:08:53', 298486374)
+  [1m[36mPK and Serial Sequence (7.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_games"'::regclass
+[0m
+  [1m[35mReset Sequence (6.0ms)[0m            SELECT setval('"published_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_games_id_seq"), (SELECT min_value FROM "published_games_id_seq")) FROM "published_games"), false)
+
+  [1m[36mPK and Serial Sequence (4.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_scores"'::regclass
+[0m
+  [1m[35mReset Sequence (3.0ms)[0m            SELECT setval('"published_game_scores_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_scores_id_seq"), (SELECT min_value FROM "published_game_scores_id_seq")) FROM "published_game_scores"), false)
+
+  [1m[36mPK and Serial Sequence (8.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_word_sets"'::regclass
+[0m
+  [1m[35mReset Sequence (4.0ms)[0m            SELECT setval('"published_game_word_sets_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_word_sets_id_seq"), (SELECT min_value FROM "published_game_word_sets_id_seq")) FROM "published_game_word_sets"), false)
+
+  [1m[36mPK and Serial Sequence (5.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"submitted_games"'::regclass
+[0m
+  [1m[35mReset Sequence (5.0ms)[0m            SELECT setval('"submitted_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "submitted_games_id_seq"), (SELECT min_value FROM "submitted_games_id_seq")) FROM "submitted_games"), false)
+
+  [1m[36mPK and Serial Sequence (4.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"users"'::regclass
+[0m
+  [1m[35mReset Sequence (4.0ms)[0m            SELECT setval('"users_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "users_id_seq"), (SELECT min_value FROM "users_id_seq")) FROM "users"), false)
+
+  [1m[36m (3.0ms)[0m  [1mALTER TABLE "published_game_scores" ENABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" ENABLE TRIGGER ALL;ALTER TABLE "published_games" ENABLE TRIGGER ALL;ALTER TABLE "submitted_games" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+-------------------------
+UserTest: test_make_admin
+-------------------------
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (7.0ms)[0m  ALTER TABLE "published_game_scores" DISABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" DISABLE TRIGGER ALL;ALTER TABLE "published_games" DISABLE TRIGGER ALL;ALTER TABLE "submitted_games" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36mFixture Delete (7.0ms)[0m  [1mDELETE FROM "published_games"[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2016-01-20 14:04:38.000000', 'f', 'f', 'MyString', '2016-01-21 13:09:58', '2016-01-21 13:09:58', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2016-01-20 14:04:38.000000', 'f', 'f', 'MyString', '2016-01-21 13:09:58', '2016-01-21 13:09:58', 298486374)[0m
+  [1m[35mFixture Delete (4.0ms)[0m  DELETE FROM "published_game_scores"
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 13:09:59', '2016-01-21 13:09:59', 980190962)[0m
+  [1m[35mFixture Insert (2.0ms)[0m  INSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 13:09:59', '2016-01-21 13:09:59', 298486374)
+  [1m[36mFixture Delete (2.0ms)[0m  [1mDELETE FROM "published_game_word_sets"[0m
+  [1m[35mFixture Insert (4.0ms)[0m  INSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (1, 'MyText', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (1, 'MyText', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 298486374)[0m
+  [1m[35mFixture Delete (2.0ms)[0m  DELETE FROM "submitted_games"
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "submitted_games" ("user_id", "title", "description", "words", "published_game_id", "status", "reason", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', 1, 'MyString', 'MyString', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "submitted_games" ("user_id", "title", "description", "words", "published_game_id", "status", "reason", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', 1, 'MyString', 'MyString', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 298486374)
+  [1m[36mFixture Delete (3.0ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (2.0ms)[0m  INSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName1', 'MyKey1', 't', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName2', 'MyKey2', 'f', '2016-01-21 13:09:59', '2016-01-21 13:09:59', 298486374)[0m
+  [1m[35mPK and Serial Sequence (8.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_games"'::regclass
+
+  [1m[36mReset Sequence (6.0ms)[0m  [1m          SELECT setval('"published_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_games_id_seq"), (SELECT min_value FROM "published_games_id_seq")) FROM "published_games"), false)
+[0m
+  [1m[35mPK and Serial Sequence (6.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_scores"'::regclass
+
+  [1m[36mReset Sequence (4.0ms)[0m  [1m          SELECT setval('"published_game_scores_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_scores_id_seq"), (SELECT min_value FROM "published_game_scores_id_seq")) FROM "published_game_scores"), false)
+[0m
+  [1m[35mPK and Serial Sequence (4.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_word_sets"'::regclass
+
+  [1m[36mReset Sequence (3.0ms)[0m  [1m          SELECT setval('"published_game_word_sets_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_word_sets_id_seq"), (SELECT min_value FROM "published_game_word_sets_id_seq")) FROM "published_game_word_sets"), false)
+[0m
+  [1m[35mPK and Serial Sequence (4.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"submitted_games"'::regclass
+
+  [1m[36mReset Sequence (5.0ms)[0m  [1m          SELECT setval('"submitted_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "submitted_games_id_seq"), (SELECT min_value FROM "submitted_games_id_seq")) FROM "submitted_games"), false)
+[0m
+  [1m[35mPK and Serial Sequence (4.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"users"'::regclass
+
+  [1m[36mReset Sequence (4.0ms)[0m  [1m          SELECT setval('"users_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "users_id_seq"), (SELECT min_value FROM "users_id_seq")) FROM "users"), false)
+[0m
+  [1m[35m (3.0ms)[0m  ALTER TABLE "published_game_scores" ENABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" ENABLE TRIGGER ALL;ALTER TABLE "published_games" ENABLE TRIGGER ALL;ALTER TABLE "submitted_games" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+-------------------------
+UserTest: test_make_admin
+-------------------------
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 298486374 LIMIT 1[0m
+  [1m[35mSavepoint (31.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (24.0ms)[0m  [1mUPDATE "users" SET "admin" = 't', "updated_at" = '2016-01-21 13:09:59.508000' WHERE "users"."id" = 298486374[0m
+  [1m[35mSavepoint (2.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mActiveRecord::SchemaMigration Load (96.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (46.0ms)[0m  ALTER TABLE "published_game_scores" DISABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" DISABLE TRIGGER ALL;ALTER TABLE "published_games" DISABLE TRIGGER ALL;ALTER TABLE "submitted_games" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (4.0ms)[0m  [1mALTER TABLE "published_game_scores" ENABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" ENABLE TRIGGER ALL;ALTER TABLE "published_games" ENABLE TRIGGER ALL;ALTER TABLE "submitted_games" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (6.0ms)[0m  ALTER TABLE "published_game_scores" DISABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" DISABLE TRIGGER ALL;ALTER TABLE "published_games" DISABLE TRIGGER ALL;ALTER TABLE "submitted_games" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36mFixture Delete (82.0ms)[0m  [1mDELETE FROM "published_games"[0m
+  [1m[35mFixture Insert (2.0ms)[0m  INSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'Matter1', 'Elements and symbol', '2016-01-20 14:04:38.000000', 't', 't', 'gwink', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "published_games" ("user_id", "title", "description", "featured", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'Matter2', 'Elements and symbol', '2016-01-20 14:04:38.000000', 'f', 't', 'gwink', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 298486374)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "published_games" ("user_id", "title", "description", "current_feature", "active", "username", "created_at", "updated_at", "id") VALUES (1, 'Matter3', 'Elements and symbol', 'f', 'f', 'gwink', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 113629430)
+  [1m[36mFixture Delete (59.0ms)[0m  [1mDELETE FROM "published_game_scores"[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 19:43:50', '2016-01-21 19:43:50', 980190962)
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "published_game_scores" ("published_game_id", "user_id", "username", "points", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 1, '2016-01-21 19:43:50', '2016-01-21 19:43:50', 298486374)[0m
+  [1m[35mFixture Delete (39.0ms)[0m  DELETE FROM "published_game_word_sets"
+  [1m[36mFixture Insert (3.0ms)[0m  [1mINSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (1, '["boron:b", "silver:ag", "hydrogen:h", "oxygen:o"]', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 980190962)[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "published_game_word_sets" ("published_game_id", "words", "created_at", "updated_at", "id") VALUES (2, '["helium:he", "gold:au"]', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 298486374)
+  [1m[36mFixture Delete (24.0ms)[0m  [1mDELETE FROM "submitted_games"[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "submitted_games" ("user_id", "title", "description", "words", "status", "created_at", "updated_at", "id") VALUES (1, 'TestGame1', 'game_desc_1', '["answer1:clue1", "answer2:clue2", "answer3:clue3"]', 'Submitted', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 980190962)
+  [1m[36mFixture Insert (3.0ms)[0m  [1mINSERT INTO "submitted_games" ("user_id", "title", "description", "words", "status", "created_at", "updated_at", "id") VALUES (1, 'TestGame2', 'game_desc_2', '["answer21:clue21", "answer22:clue22", "answer23:clue23"]', 'Submitted', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 298486374)[0m
+  [1m[35mFixture Delete (43.0ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (2.0ms)[0m  [1mINSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName1', 'MyKey1', 't', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 980190962)[0m
+  [1m[35mFixture Insert (3.0ms)[0m  INSERT INTO "users" ("username", "key", "admin", "created_at", "updated_at", "id") VALUES ('MyName2', 'MyKey2', 'f', '2016-01-21 19:43:50', '2016-01-21 19:43:50', 298486374)
+  [1m[36mPK and Serial Sequence (103.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_games"'::regclass
+[0m
+  [1m[35mReset Sequence (45.0ms)[0m            SELECT setval('"published_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_games_id_seq"), (SELECT min_value FROM "published_games_id_seq")) FROM "published_games"), false)
+
+  [1m[36mPK and Serial Sequence (8.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_scores"'::regclass
+[0m
+  [1m[35mReset Sequence (26.0ms)[0m            SELECT setval('"published_game_scores_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_scores_id_seq"), (SELECT min_value FROM "published_game_scores_id_seq")) FROM "published_game_scores"), false)
+
+  [1m[36mPK and Serial Sequence (5.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"published_game_word_sets"'::regclass
+[0m
+  [1m[35mReset Sequence (25.0ms)[0m            SELECT setval('"published_game_word_sets_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "published_game_word_sets_id_seq"), (SELECT min_value FROM "published_game_word_sets_id_seq")) FROM "published_game_word_sets"), false)
+
+  [1m[36mPK and Serial Sequence (6.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"submitted_games"'::regclass
+[0m
+  [1m[35mReset Sequence (12.0ms)[0m            SELECT setval('"submitted_games_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "submitted_games_id_seq"), (SELECT min_value FROM "submitted_games_id_seq")) FROM "submitted_games"), false)
+
+  [1m[36mPK and Serial Sequence (4.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"users"'::regclass
+[0m
+  [1m[35mReset Sequence (13.0ms)[0m            SELECT setval('"users_id_seq"', (SELECT COALESCE(MAX("id")+(SELECT increment_by FROM "users_id_seq"), (SELECT min_value FROM "users_id_seq")) FROM "users"), false)
+
+  [1m[36m (2.0ms)[0m  [1mALTER TABLE "published_game_scores" ENABLE TRIGGER ALL;ALTER TABLE "published_game_word_sets" ENABLE TRIGGER ALL;ALTER TABLE "published_games" ENABLE TRIGGER ALL;ALTER TABLE "submitted_games" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+----------------------------------------
+PublishedGameTest: test_current_featured
+----------------------------------------
+  [1m[35mPublishedGame Load (6.0ms)[0m  SELECT  "published_games".* FROM "published_games"  WHERE "published_games"."current_feature" = 't'  ORDER BY "published_games"."id" ASC LIMIT 1
+  [1m[36mPublishedGame Load (5.0ms)[0m  [1mSELECT  "published_games".* FROM "published_games"  WHERE "published_games"."id" = 298486374 LIMIT 1[0m
+  [1m[35mPublishedGame Load (8.0ms)[0m  SELECT  "published_games".* FROM "published_games"  WHERE "published_games"."current_feature" = 't'  ORDER BY "published_games"."id" ASC LIMIT 1

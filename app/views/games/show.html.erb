@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @game.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @game.user ? @game.user.username : "None" %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= yes_or_no(@game.active) %>
+</p>
+
+<p>
+  <strong>Currently Featured:</strong>
+  <%= yes_or_no(@game.current_feature) %>
+</p>
+
+<p>
+  <strong>Featured:</strong>
+  <%= @game.featured %>
+</p>
+
+<%= link_to 'Back', games_path %>

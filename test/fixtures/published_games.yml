@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: Matter1
+  description: 'Elements and symbol'
+  featured: 2016-01-20 14:04:38
+  current_feature: true
+  active: true
+  username: gwink
+
+two:
+  user_id: 1
+  title: Matter2
+  description: 'Elements and symbol'
+  featured: 2016-01-20 14:04:38
+  current_feature: false
+  active: true
+  username: gwink
+
+three:
+  user_id: 1
+  title: Matter3
+  description: 'Elements and symbol'
+  current_feature: false
+  active: false
+  username: gwink
+  
