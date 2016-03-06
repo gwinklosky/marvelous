@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @submitted_game.title %>
+</p>
+
+<p>
+  <strong>Words:</strong>
+  <%= @submitted_game.words %>
+</p>
+
+<%= link_to 'Edit', edit_submitted_game_path(@submitted_game) %> |
+<%= link_to 'Back', submitted_games_path %>

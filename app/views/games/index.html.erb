@@ -13,7 +13,7 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.title %></td>
-        <td><%= game.user.username %></td>
+        <td><%= game.user ? game.user.username : "None" %></td>
         <td><%= link_to 'Show', game_url(game) %></td>
       </tr>
     <% end %>

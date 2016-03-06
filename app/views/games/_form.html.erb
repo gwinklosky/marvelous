@@ -1,0 +1,29 @@
+<%= form_tag(controller: "games", action: "update") do %> 
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+      <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :title, 'Title' %><br>
+    <%= text_field_tag :title, @game.title %>
+  </div>
+  <div class="field">
+    <%= label_tag :description, 'Description' %><br>
+    <%= text_field_tag :description, @game.description %>
+  </div>
+  <div class="field">
+    <%= label_tag :user, 'User' %><br>
+    <%= @game.user ? @game.user.username : "None" %>
+  </div>
+  <%= render '/submitted_games/user_auth' %>  
+  <div class="actions">
+    <%= submit_tag('Submit') %>
+  </div>
+<% end %>

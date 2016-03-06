@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= @submitted_game.user ? @submitted_game.user.username : "None" %>
   </div>
   <div class="field">
     <%= f.label :words %><br>
-    <%= f.text_field :words %>
+    <%= @submitted_game.words %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
@@ -35,6 +35,7 @@
     <%= f.label :reason %><br>
     <%= f.text_field :reason %>
   </div>
+  <%= render 'user_auth' %>  
   <div class="actions">
     <%= f.submit %>
   </div>

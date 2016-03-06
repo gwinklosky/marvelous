@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @words.published_game.title %>
+</p>
+
+<p>
+  <strong>Words:</strong>
+  <%= @words.words %>
+</p>
+
+<%= link_to 'Back', game_path(@words.published_game) %>

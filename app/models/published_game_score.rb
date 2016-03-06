@@ -8,4 +8,7 @@ class PublishedGameScore < ActiveRecord::Base
   validates :published_game_id, uniqueness: { scope: :user_id,
     message: "one score per user per game" }
 
+  def game_name
+    published_game.title
+  end
 end

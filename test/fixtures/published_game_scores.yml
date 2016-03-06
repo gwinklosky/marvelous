@@ -3,11 +3,18 @@
 one:
   published_game_id: 1
   user_id: 1
-  username: MyString
+  username: MyName1
   points: 1
 
 two:
   published_game_id: 1
   user_id: 1
-  username: MyString
-  points: 1
+  username: MyName1
+  points: 15
+
+user_two_1:
+  published_game_id: 1
+  user_id: 2
+  username: MyName2
+  points: 13
+  

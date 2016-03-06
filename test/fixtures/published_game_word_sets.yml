@@ -7,3 +7,8 @@ one:
 two:
   published_game_id: 2
   words: '["helium:he", "gold:au"]'
+
+three:
+  published_game_id: 3
+  words: '["oxygen:o", "nickle:ni"]'
+  

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :load_instance, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_instance, :only => [:show, :edit, :update, :clense, :destroy]
 
   def index
-    @users = User.all
+    limit_to = params[:limit] ? params[:limit].to_i : 200 
+    @users = User.all.order("updated_at desc").limit(limit_to)
   end
   
   def published
@@ -25,19 +26,36 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def clense
+    users = User.where(admin_params.merge(:admin => true))
+    if !users.empty?
+      @user.clense_username
+    end
+    render 'show'
+  end
+
   def update
-    if @user.update(user_params)
-      redirect_to @user
+    users = User.where(admin_params.merge(:admin => true))
+    if !users.empty?  
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      render '/games/invalid_id'
     end
   end
 
-def destroy
-  @user.destroy
- 
-  redirect_to users_path
-end
+  def destroy
+    users = User.where(admin_params.merge(:admin => true))
+    if !users.empty?  
+      @user.destroy
+      redirect_to users_path
+    else
+      render '/games/invalid_id'
+    end
+  end
 
 private
   def load_instance
@@ -45,6 +63,10 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:username, :key, :admin)
+    params.require(:user).permit(:username, :key)
+  end
+  
+  def admin_params
+    params.require(:admin).permit(:id, :key)
   end
 end

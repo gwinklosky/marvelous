@@ -7,7 +7,7 @@ one:
   featured: 2016-01-20 14:04:38
   current_feature: true
   active: true
-  username: gwink
+  username: MyName1
 
 two:
   user_id: 1
@@ -16,13 +16,13 @@ two:
   featured: 2016-01-20 14:04:38
   current_feature: false
   active: true
-  username: gwink
+  username: MyName1
 
 three:
-  user_id: 1
+  user_id: 2
   title: Matter3
   description: 'Elements and symbol'
   current_feature: false
   active: false
-  username: gwink
+  username: MyName2
   

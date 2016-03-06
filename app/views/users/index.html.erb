@@ -1,5 +1,4 @@
 <h1>Listing Users</h1>
-
 <table>
   <thead>
     <tr>
@@ -14,7 +13,7 @@
         <td><%= user.username %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Games', published_games_path(:id => user.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +21,5 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Show All', users_path %>
+<%= link_to 'Show Published', published_users_path %>
