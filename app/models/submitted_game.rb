@@ -13,9 +13,9 @@ class SubmittedGame < ActiveRecord::Base
   end
   
   def publish
-    g = PublishedGame.new(:user_id => user_id, :title => title, :description => description, :current_feature => false, :active => true)
-    words = PublishedGameWordSet.new(:words => words)
-    g.published_game_word_set = words
+    g = PublishedGame.new(:user_id => user_id, :username => user.username, :title => title, :description => description, :current_feature => false, :active => true)
+    word_set = PublishedGameWordSet.create(:words => words)
+    g.published_game_word_set = word_set
     if g.save
       user.update_attributes(:published => true) if !user.published  
       update_attributes(:status => "Published", :reason => "Success", :published_game_id => g.id)  
